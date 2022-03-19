@@ -18,3 +18,8 @@ def login_user(request):
         else :
             return JsonResponse({"User": "invalid user"})
     return render(request, 'accounts/login.html')
+    
+@login_required(login_url='login')
+def logout_user(request):
+    logout(request)
+    return redirect('login')
