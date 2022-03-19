@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-6">
             <legend>Sign In</legend>
-            <form action="" method="post">
+            <form action="{% url 'login'%}" method="post">
                 {% csrf_token %}
                 <div class="form-group">
                     <input type="email" class="form-control" name="email" placeholder="Email Address">
