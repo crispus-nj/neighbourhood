@@ -5,10 +5,13 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
 from .models import UserAccount
+from .forms import RegistrationForm
 
 # Create your views here.
 def register(request):
-    return render(request, 'accounts/register.html')
+    form = RegistrationForm()
+    context = {'form': form}
+    return render(request, 'accounts/register.html', context)
 
 def login_user(request):
     if request.method == 'POST':

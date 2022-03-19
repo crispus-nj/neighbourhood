@@ -1,0 +1,14 @@
+body {
+    background-color: hsl(210, 36%, 96%);
+}
+.row-shadow  {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    background-color: #112433;
+    border-radius: 12px;
+    padding: 1rem;
+}
+legend {
+    text-align: center;
+    text-transform: uppercase;
+    color: white;
+}
