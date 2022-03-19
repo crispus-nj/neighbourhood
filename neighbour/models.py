@@ -4,7 +4,7 @@ from accounts.models import UserAccount
 # Create your models here.
 class Post(models.Model):
     title = models.CharField(max_length=50)
-    user = models.ForeignKey(UserAccount, on_delete=models.CASCADE)
+    user = models.ForeignKey(UserAccount, on_delete=models.CASCADE, related_name='user')
     image = models.ImageField()
     description = models.TextField()
     date_posted = models.DateTimeField(auto_now_add=True)

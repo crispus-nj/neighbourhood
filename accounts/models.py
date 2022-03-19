@@ -1,3 +1,4 @@
+from email.policy import default
 from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
 
@@ -61,3 +62,6 @@ class UserAccount(AbstractBaseUser):
 
     def has_module_perms(self,add_label):
         return self.is_admin
+
+
+
