@@ -12,3 +12,9 @@ legend {
     text-transform: uppercase;
     color: white;
 }
+.d-flex .form-control-sm{
+    background-color:rgba(0,0,0,0) !important;
+    border:none !important;
+ }
+
+

@@ -46,7 +46,7 @@ def login_user(request):
         user = authenticate(request, email=email, password=password)
         if user is not None:
             login(request, user)
-            return redirect('home')
+            return redirect('landing')
         else :
             return JsonResponse({"User": "invalid user"})
     return render(request, 'accounts/login.html')
@@ -54,4 +54,4 @@ def login_user(request):
 @login_required(login_url='login')
 def logout_user(request):
     logout(request)
-    return redirect('login')
+    return redirect('home')
