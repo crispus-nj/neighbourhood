@@ -1,8 +1,27 @@
 .container-fluid {
-font-family: 'roboto', sans-serif;
+font-family: 'roboto', sans-serif !important;
+color: white;
+}
+.introduction {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    border-radius: 12px;
+    padding: 1rem;
+    background-color: #112433;
+    margin: 2rem auto;
+    width:  70%;
 }
 h5 {
     margin-left: 1rem;
+}
+.nav  a{
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+.nav a:hover,
+.nav a:active {
+    color:#0294B3;
+    transition: 0.5s;
 }
 .button {
     border-radius: 20px;
@@ -10,4 +29,20 @@ h5 {
     font-weight: bold;
     padding-left: 20px;
     padding-right: 20px;
+}
+hr {
+    color: white !important;
+    font-weight: bold;
+}
+.content {
+    display: flex;
+    justify-content: space-between;
+}
+h2 {
+    font-weight: bold;
+}
+img {
+    border-radius: 50%;
+    max-width: 400px;
+    max-height: 400px;
 }

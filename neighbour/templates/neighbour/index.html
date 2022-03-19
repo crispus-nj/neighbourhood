@@ -1,22 +1,55 @@
 {% extends 'home.html' %}
+{% load static %}
 {% block content %}
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-12">
-            <div class="introduction d-flex justify-content-around align-items-center">
-                <div>
-                    <h4>Community</h4>
+        <div class="col-md-10 introduction mt-5 mb-5">
+            <div class=" d-flex justify-content-around align-items-center">
+                <div class="nav">
+                    <h4><a href="#">Community</a></h4>
                 </div>
-                <div class="d-flex justify-content-around">
-                    <h5>Community</h5>
-                    <h5>About</h5>
-                    <h5>FAQ</h5>
+                <div class="nav d-flex justify-content-around">
+                    <h5><a href="#" class="nav-item">Community</a></h5>
+                    <h5><a href="#">About</a></h5>
+                    <h5><a href="#">FAQ</a></h5>
                 </div>
                 <div>
-                    <a class="btn btn-success  button"> Login</a>
+                    <a href="#" class="btn btn-success  button"> Login</a>
                 </div>
             </div>
             <hr>
+            <div class="content d-flex justify-content-around align-items-center">
+                <div class="content-paragragh" style="max-width: 350px;">
+                    <div>
+                        <h2>Instant connect with your neighbourhood</h2>
+                    </div>
+                    <div>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero laudantium cum possimus nobis tenetur dolor ducimus esse quam corrupti nam dolorem quo, atque sint sunt. Optio eveniet consequatur quasi velit?</p>
+                    </div>
+                    <div>
+                        <a href="#" class="btn btn-info button">Join</a>
+                    </div>
+                </div>
+                <div class="content-image">
+                    <img src="{% static 'images/communityCrop-removebg-preview.png'%}" alt="image">
+                </div>
+            </div>
+            <hr>
+            <div class="content-2 d-flex justify-content-around align-items-center">
+                <div class="content-2-image">
+                    <img src="{% static 'images/communitycrop2-removebg-preview.png'%}" alt="image">  
+                </div>
+                <div class="content-2-paragraph "  style="max-width: 350px;">
+                    <h2>Get the most out of your neighbourhood Nextdoor</h2>
+                    <p>
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam quis ex, id nisi non tempora officia unde autem alias aliquid? Vitae, iusto? Nesciunt ad voluptatibus maxime nobis corrupti aspernatur voluptate.
+                    </p>
+                    <p>
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam quis ex, id nisi non tempora officia unde autem alias aliquid? Vitae, iusto? Nesciunt ad voluptatibus maxime nobis corrupti aspernatur voluptate.
+                    </p>
+                </div>
+            </div>
+            
         </div>
         
     </div>
