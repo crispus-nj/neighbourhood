@@ -8,3 +8,4 @@ class Profile(models.Model):
     location = models.ForeignKey(Location, on_delete=models.CASCADE)
     business = models.ForeignKey(Business, on_delete=models.CASCADE, blank=True, null=True)
     avatar = models.ImageField(null=True, default='avatar.svg')
+    bio = models.TextField(blank=True, null=True)
