@@ -1,0 +1,13 @@
+.container-fluid {
+font-family: 'roboto', sans-serif;
+}
+h5 {
+    margin-left: 1rem;
+}
+.button {
+    border-radius: 20px;
+    color: white !important;
+    font-weight: bold;
+    padding-left: 20px;
+    padding-right: 20px;
+}
