@@ -1,5 +1,6 @@
 from django import forms
 from accounts.models import UserAccount
+from django.core.exceptions import ValidationError
 
 class RegistrationForm(forms.ModelForm):
     password = forms.CharField(max_length=100, widget=forms.PasswordInput(attrs={
@@ -24,3 +25,11 @@ class RegistrationForm(forms.ModelForm):
 
         for field in self.fields:
             self.fields[field].widget.attrs['class'] = 'form-control'
+    
+    def clean(self):
+        clean_data = super(RegistrationForm, self).clean()
+        password = clean_data.get('password')
+        confirm_password = clean_data.get('confirm_password')
+
+        if password != confirm_password:
+            raise ValidationError('Password must match')

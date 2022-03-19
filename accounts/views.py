@@ -29,12 +29,13 @@ def register(request):
             user.phone_number = phone_number
             user.is_active = True
             user.save()
+            login(request, user)
 
-            return redirect('login')
+            return redirect('home')
         else :
-            return JsonResponse({"User": "invalid user"}) 
-
-    form = RegistrationForm()
+            render(request, 'accounts/register.html', {'form': form})
+    else :
+        form = RegistrationForm()
     context = {'form': form}
     return render(request, 'accounts/register.html', context)
 
