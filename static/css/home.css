@@ -1,3 +1,6 @@
+body {
+    background-color: hsl(210, 36%, 96%);
+}
 .container-fluid {
 font-family: 'roboto', sans-serif !important;
 color: white;
