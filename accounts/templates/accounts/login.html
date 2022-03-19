@@ -1,9 +1,13 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block title %} Login {% endblock %}
 {% block content %}
 <div class="container">
-    <div class="row">
-        <div class="col-md-6">
+    <div class="row row-shadow d-flex justify-content-around align-items-center mt-5 mb-5">
+        <div class="col-md-5">
+            <img src="{% static 'images/media/4204968-removebg-preview.png'%}" alt="image">
+        </div>
+        <div class="col-md-5">
             <legend>Sign In</legend>
             <form action="{% url 'login'%}" method="post">
                 {% csrf_token %}

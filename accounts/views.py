@@ -7,6 +7,9 @@ from django.contrib.auth.decorators import login_required
 from .models import UserAccount
 
 # Create your views here.
+def register(request):
+    return render(request, 'accounts/register.html')
+
 def login_user(request):
     if request.method == 'POST':
         email = request.POST.get('email')
@@ -18,7 +21,7 @@ def login_user(request):
         else :
             return JsonResponse({"User": "invalid user"})
     return render(request, 'accounts/login.html')
-    
+
 @login_required(login_url='login')
 def logout_user(request):
     logout(request)
