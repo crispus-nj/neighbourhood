@@ -27,6 +27,10 @@ legend {
  .business-information ul li {
      list-style-type: none;
  }
+ .owner:hover {
+     color: blue;
+     transition: 0.5s;
+ }
 
 
  /* end business styless */

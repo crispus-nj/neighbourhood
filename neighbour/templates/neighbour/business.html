@@ -3,23 +3,56 @@
 {% block content %}
 <div class="container">
     <div class="row">
+        <div class="col-md-12 mt-4">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                Add Business
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            ...
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Understood</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
         {% for business in businesses %}
         <div class="col-md-4">
-            <div class="business d-flex align-items-center justify-content-start">
+            <div class="card business d-flex justify-content-start">
                 <div class="image">
-                    <img src="{{business.image.url}}" alt="business image">
+                    <img src="{{business.image.url}}" class="card-img-top" alt="business image">
                 </div>
-                <div class="business-information d-inline">
-                    <ul>
-                        <li><span class="text-success">Name:</span> {{business.name}}</li>
-                        <li><span class="text-success">Category:</span>{{ business.category }}</li>
-                        <li><span class="text-success">Location:</span>{{business.location.name}}</li>
-                        <li><span class="text-success">Owner:</span>{{business.user.username}}</li>
+                <div class="mt-2" style="color: inherit;">
+                    <p><span class="text-success" style="font-weight:bold;">Owner:</span><span
+                            style="color: white; font-size:1.1rem;font-weight:bold"><a href="" class="owner"
+                                style="text-decoration: none;color:white">{{business.user.username}}</a></span></p>
+                    <ul class="list-group list-group-flush">
+                        <p><span class="text-success" style="font-weight:bold;">Category:</span><span
+                                style="color: white; font-size:1.1rem"> {{ business.category }}</span></p>
+                        <p><span class="text-success" style="font-weight:bold;">Name:</span> <span
+                                style="color: white; font-size:1.1rem"> {{business.name}}</span> </p>
+                        <p><span class="text-success" style="font-weight:bold;">Location:</span><span
+                                style="color: white; font-size:1.1rem"> {{business.location.name}}</span> </p>
                     </ul>
                 </div>
             </div>
         </div>
-        
+
         {% endfor %}
     </div>
 </div>
