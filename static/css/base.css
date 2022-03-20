@@ -17,4 +17,17 @@ legend {
     border:none !important;
  }
 
+ /* business styles */
+ .business {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    border-radius: 12px;
+    background-color: #112433;
+    padding: 1rem;
+ }
+ .business-information ul li {
+     list-style-type: none;
+ }
+
+
+ /* end business styless */
 

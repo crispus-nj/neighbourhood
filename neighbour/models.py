@@ -18,6 +18,7 @@ class Business(models.Model):
     location = models.ForeignKey('Location', on_delete=models.CASCADE, related_name='location')
     name = models.CharField(max_length=150)
     category = models.CharField(max_length=100)
+    image = models.ImageField(null=True)
 
     def __str__(self):
         return self.name

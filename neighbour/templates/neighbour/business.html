@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %} List of Business{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        {% for business in businesses %}
+        <div class="col-md-4">
+            <div class="business d-flex align-items-center justify-content-start">
+                <div class="image">
+                    <img src="{{business.image.url}}" alt="business image">
+                </div>
+                <div class="business-information d-inline">
+                    <ul>
+                        <li><span class="text-success">Name:</span> {{business.name}}</li>
+                        <li><span class="text-success">Category:</span>{{ business.category }}</li>
+                        <li><span class="text-success">Location:</span>{{business.location.name}}</li>
+                        <li><span class="text-success">Owner:</span>{{business.user.username}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
