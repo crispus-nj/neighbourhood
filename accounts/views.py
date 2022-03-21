@@ -5,7 +5,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
 from .models import UserAccount
-from .forms import RegistrationForm
+from .forms import RegistrationForm, ProfileCreationForm
 
 # Create your views here.
 def register(request):
@@ -59,3 +59,10 @@ def login_user(request):
 def logout_user(request):
     logout(request)
     return redirect('home')
+
+@login_required(login_url='login')
+def user_profile(request):
+    form = ProfileCreationForm()
+    context = {'form': form}
+
+    return render(request, 'accounts/profile.html', context)
