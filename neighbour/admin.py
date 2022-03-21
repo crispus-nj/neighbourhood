@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from .models import Location, Business, Profile
+from .models import Location, Business
 
 class LocationStyle(UserAdmin):
     list_display = ('name', 'county',)
@@ -12,4 +12,3 @@ class LocationStyle(UserAdmin):
 
 admin.site.register(Location)
 admin.site.register(Business)
-admin.site.register(Profile)

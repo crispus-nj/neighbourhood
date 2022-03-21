@@ -2,13 +2,27 @@ from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
 from .models import Business, Location, Post
 from .forms import BusinessRegistrationForm
+from accounts.models import Profile, UserAccount
 
 def home(request):
+    if request.user.is_authenticated: 
+        return redirect('landing')
     return render(request, 'neighbour/index.html')
 
 @login_required(login_url='login')
 def landing(request):
-    return render(request, 'neighbour/landing.html')
+    user = UserAccount.objects.get(id = request.user.id)
+    bizna = Business.objects.all()
+    prof = user.users.all()
+    for profile in prof:
+        crispus = Location.objects.get(id = profile.location.id)
+        biashara = crispus.business.all()
+        print(biashara)
+        bizna = biashara
+    location = user.people.all()
+    locations = Location.objects.all()
+    context = {'location': location, 'bizna':bizna, 'locale': locations}
+    return render(request, 'neighbour/landing.html', context)
 
 @login_required(login_url='login')
 def business(request):
@@ -35,7 +49,6 @@ def business(request):
             business.save()
 
             return redirect('business')
-
 
     form = BusinessRegistrationForm()
     context = {'businesses': businesses, 'form':form}

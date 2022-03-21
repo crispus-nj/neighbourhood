@@ -1,5 +1,55 @@
 {% extends 'base.html' %}
 {% block title %} Welcome {{request.user.username}} {% endblock %}
-
 {% block content %}
+
+<div class="container">
+    <div class="row mt-3 mb-5">
+        <div class="col-md-3">
+            {% for user in location  %}
+            <h4>neighbours ({{user.people.all.count}})</h4>
+            <hr>
+             <div class="card">
+                {% for users in user.people.all %}
+                        <ul class="list-group list-group-flush">
+                          <li class="list-group-item">@{{users.username}}</li>
+                        </ul>
+                     
+                {% endfor %}
+        {% endfor %}
+         </div>
+        </div>
+        <div class="col-md-6">
+            <h4 class="text-center">Business within your location</h4>
+            <hr>
+            
+            {% for business in bizna %}
+            <div class="card business d-flex justify-content-start mt-2">
+                <div class="image">
+                    <img src="{{business.image.url}}" class="card-img-top" alt="business image" height="200">
+                </div>
+                <div class="mt-2" style="color: inherit;">
+                    <p><span class="text-success" style="font-weight:bold;">Owner:</span><span
+                            style="color: white; font-size:1.1rem;font-weight:bold"><a href="" class="owner"
+                                style="text-decoration: none;color:white">{{business.user.username}}</a></span></p>
+                    <ul class="list-group list-group-flush">
+                        <p><span class="text-success" style="font-weight:bold;">Category:</span><span
+                                style="color: white; font-size:1.1rem"> {{ business.category }}</span></p>
+                        <p><span class="text-success" style="font-weight:bold;">Name:</span> <span
+                                style="color: white; font-size:1.1rem"> {{business.name}}</span> </p>
+                        <p><span class="text-success" style="font-weight:bold;">Location:</span><span
+                                style="color: white; font-size:1.1rem"> {{business.location.name}}</span> </p>
+                    </ul>
+                </div>
+            </div>
+        {% endfor %}
+
+
+        </div>
+        <div class="col-md-2">
+            <h4>Locations</h4>
+            <hr>
+
+        </div>
+    </div>
+</div>
 {% endblock %}

@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 
-from .models import UserAccount
+from .models import UserAccount, Profile
 
 
 class StyleUser(UserAdmin):
@@ -13,3 +13,4 @@ class StyleUser(UserAdmin):
     ordering = ('-last_login', )
 
 admin.site.register(UserAccount, StyleUser)
+admin.site.register(Profile)

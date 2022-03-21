@@ -1,7 +1,6 @@
 from email.policy import default
 from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser, PermissionsMixin
-# from neighbour.models import Location
 
 # Create your models here.
 class UserAccountPermission(BaseUserManager):
@@ -65,5 +64,15 @@ class UserAccount(AbstractBaseUser):
         return self.is_admin
 
 
+from neighbour.models import Location
+
+class Profile(models.Model):
+    avatar = models.ImageField(null=True, default='avatar.svg')
+    bio = models.TextField(blank=True, null=True)
+    user = models.ForeignKey(UserAccount, on_delete=models.CASCADE, related_name='users')
+    location = models.ForeignKey(Location, on_delete=models.CASCADE, related_name='mtaani')
+
+    def __str__(self):
+        return self.user.username
     
 
