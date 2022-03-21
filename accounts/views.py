@@ -68,10 +68,15 @@ def user_profile(request, pk):
     prof = Profile.objects.get(id = pk)
     profile = user.users.all()
     business = user.author.all()
-    # print(profile)
-    # for prof in profile:
-    #     print(prof.user)
     form = ProfileCreationForm()
     context = {'form': form, 'profile': profile, 'prof':prof, 'business': business}
 
     return render(request, 'accounts/profile.html', context)
+
+@login_required(login_url='login')
+def edit_user(request):
+    user = UserAccount.objects.get(id = request.user.id)
+    prof = Profile.objects.get(id = request.user.id)
+    form = ProfileCreationForm()
+    context = {'form': form, 'prof': prof}
+    return render(request, 'accounts/edit_profile.html', context)
