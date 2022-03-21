@@ -44,7 +44,7 @@ class ProfileCreationForm(forms.ModelForm):
     }))
     class Meta:
         model = Profile
-        fields = '__all__'
+        fields = ['avatar', 'bio', 'location']
 
     def __init__(self, *args, **kwargs):
         super(ProfileCreationForm, self).__init__(*args, **kwargs)

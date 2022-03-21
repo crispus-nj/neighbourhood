@@ -75,8 +75,27 @@ def user_profile(request, pk):
 
 @login_required(login_url='login')
 def edit_user(request):
-    user = UserAccount.objects.get(id = request.user.id)
+    user = request.user
     prof = Profile.objects.get(id = request.user.id)
+    if request.method == 'POST':
+        form = ProfileCreationForm(request.POST, request.FILES)
+        print(form.errors)
+        if form.is_valid():
+            avatar = form.cleaned_data['avatar']
+            bio = form.cleaned_data['bio']
+            location = form.cleaned_data['location']
+            user = request.user
+
+            user = Profile.objects.create(
+                avatar = avatar,
+                bio = bio,
+                location = location,
+                user = user
+            )
+            return redirect('profile', request.user.id)
+        else :
+            return JsonResponse({"invalid form": "user"})
+
     form = ProfileCreationForm()
     context = {'form': form, 'prof': prof}
     return render(request, 'accounts/edit_profile.html', context)
