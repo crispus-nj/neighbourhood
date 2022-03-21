@@ -5,7 +5,7 @@
 <div class="container">
 
 <div class="row">
-    <div class="col-md-6 " style="margin: auto;">
+    <div class="col-md-8 " style="margin: auto;">
         {% for details in profile %}
             <div class="card-body little-profile text-center">
                 <div class="pro-img" ><img src="{{prof.avatar.url}}" alt="user" style="max-width: 180px;"></div>
@@ -24,17 +24,24 @@
             <h5 class="text-center" style="font-weight: bold;">BUSINESS</h5>
             <hr>
             <div class="row">
-                {% for post in posts %}
-                <div class="col-md-4">
-                    <div class="card">
-                        <img src="{{post.image.url}}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title"><p style="margin-left: 0.3rem; vertical-align:middle">{{post.liked.all.count}} likes</p> </h5>
-                          <h6 class="card-subtitle mb-2 text-muted">{{post.name}}</h6>
-                          <p class="card-text">{{post.description|truncatechars:60}}</p>
-                          <a href="{{post.project_link}}" class="card-link">View Site</a>
-                        </div>
-                      </div>
+                {% for biza in business %}
+                <div class="card business d-flex justify-content-start mt-2">
+                    <div class="image">
+                        <img src="{{biza.image.url}}" class="card-img-top" alt="business image" height="200">
+                    </div>
+                    <div class="mt-2" style="color: inherit;">
+                        <p><span class="text-success" style="font-weight:bold;">Owner:</span><span
+                                style="color: white; font-size:1.1rem;font-weight:bold"><a href="" class="owner"
+                                    style="text-decoration: none;color:white">{{biza.user.username}}</a></span></p>
+                        <ul class="list-group list-group-flush">
+                            <p><span class="text-success" style="font-weight:bold;">Category:</span><span
+                                    style="color: white; font-size:1.1rem"> {{ biza.category }}</span></p>
+                            <p><span class="text-success" style="font-weight:bold;">Name:</span> <span
+                                    style="color: white; font-size:1.1rem"> {{biza.name}}</span> </p>
+                            <p><span class="text-success" style="font-weight:bold;">Location:</span><span
+                                    style="color: white; font-size:1.1rem"> {{biza.location.name}}</span> </p>
+                        </ul>
+                    </div>
                 </div>
                 
                 {% endfor %}

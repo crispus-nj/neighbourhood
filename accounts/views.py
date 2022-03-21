@@ -4,6 +4,8 @@ from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
+from neighbour.models import Business
+
 from .models import Profile, UserAccount
 from .forms import RegistrationForm, ProfileCreationForm
 
@@ -65,10 +67,11 @@ def user_profile(request, pk):
     user = UserAccount.objects.get(id = pk)
     prof = Profile.objects.get(id = pk)
     profile = user.users.all()
+    business = user.author.all()
     # print(profile)
-    for prof in profile:
-        print(prof.user)
+    # for prof in profile:
+    #     print(prof.user)
     form = ProfileCreationForm()
-    context = {'form': form, 'profile': profile, 'prof':prof}
+    context = {'form': form, 'profile': profile, 'prof':prof, 'business': business}
 
     return render(request, 'accounts/profile.html', context)
