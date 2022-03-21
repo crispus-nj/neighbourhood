@@ -62,7 +62,10 @@ def logout_user(request):
 
 @login_required(login_url='login')
 def user_profile(request):
+    user = UserAccount.objects.get(id = request.user.id)
+    profile = user.users.all()
+    
     form = ProfileCreationForm()
-    context = {'form': form}
+    context = {'form': form, 'profile': profile}
 
     return render(request, 'accounts/profile.html', context)
