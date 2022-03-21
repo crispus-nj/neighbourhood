@@ -1,6 +1,7 @@
 from email.policy import default
 from django.db import models
-from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
+from django.contrib.auth.models import BaseUserManager, AbstractBaseUser, PermissionsMixin
+# from neighbour.models import Location
 
 # Create your models here.
 class UserAccountPermission(BaseUserManager):
@@ -64,4 +65,5 @@ class UserAccount(AbstractBaseUser):
         return self.is_admin
 
 
+    
 

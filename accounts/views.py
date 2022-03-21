@@ -31,7 +31,7 @@ def register(request):
             user.save()
             login(request, user)
 
-            return redirect('home')
+            return redirect('landing')
         else :
             render(request, 'accounts/register.html', {'form': form})
     else :
