@@ -21,7 +21,7 @@ def landing(request):
         bizna = biashara
     location = user.people.all()
     locations = Location.objects.all()
-    context = {'location': location, 'bizna':bizna, 'locale': locations}
+    context = {'location': location, 'bizna':bizna, 'locations': locations}
     return render(request, 'neighbour/landing.html', context)
 
 @login_required(login_url='login')
