@@ -4,7 +4,7 @@ from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
-from .models import UserAccount
+from .models import Profile, UserAccount
 from .forms import RegistrationForm, ProfileCreationForm
 
 # Create your views here.
@@ -61,11 +61,14 @@ def logout_user(request):
     return redirect('home')
 
 @login_required(login_url='login')
-def user_profile(request):
-    user = UserAccount.objects.get(id = request.user.id)
+def user_profile(request, pk):
+    user = UserAccount.objects.get(id = pk)
+    prof = Profile.objects.get(id = pk)
     profile = user.users.all()
-    
+    # print(profile)
+    for prof in profile:
+        print(prof.user)
     form = ProfileCreationForm()
-    context = {'form': form, 'profile': profile}
+    context = {'form': form, 'profile': profile, 'prof':prof}
 
     return render(request, 'accounts/profile.html', context)

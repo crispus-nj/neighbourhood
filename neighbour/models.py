@@ -14,7 +14,7 @@ class Post(models.Model):
         return self.title
 
 class Business(models.Model):
-    user = models.ForeignKey(UserAccount, on_delete=models.CASCADE)
+    user = models.ForeignKey(UserAccount, on_delete=models.CASCADE, related_name='author')
     location = models.ForeignKey('Location', on_delete=models.CASCADE, related_name='location')
     name = models.CharField(max_length=150)
     category = models.CharField(max_length=100)

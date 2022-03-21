@@ -31,7 +31,9 @@ legend {
      color: blue;
      transition: 0.5s;
  }
-
-
  /* end business styless */
 
+h4  {
+    text-transform: uppercase;
+    font-family: 'roboto', sans-serif;
+}

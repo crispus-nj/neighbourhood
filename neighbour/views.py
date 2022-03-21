@@ -15,10 +15,8 @@ def landing(request):
     bizna = Business.objects.all()
     prof = user.users.all()
     for profile in prof:
-        print(profile.avatar)
         crispus = Location.objects.get(id = profile.location.id)
         biashara = crispus.business.all()
-        print(biashara)
         bizna = biashara
     location = user.people.all()
     locations = Location.objects.all()

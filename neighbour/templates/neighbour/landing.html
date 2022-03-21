@@ -4,19 +4,21 @@
 
 <div class="container">
     <div class="row mt-3 mb-5">
-        <div class="col-md-3">
+        <div class="col-md-3 ">
             {% for user in location  %}
             <h4>neighbours ({{user.people.all.count}})</h4>
             <hr>
-             <div class="card">
+             <div class="card ">
                 {% for users in user.people.all %}
-                        <ul class="list-group list-group-flush">
-                          <li class="list-group-item">@{{users.username}}</li>
+                        <ul class="list-group list-group-flush ">
+                          <li class="list-group-item business"><span style="font-weight:bold;color:white"> @{{users.username}}</span></li>
                         </ul>
                      
                 {% endfor %}
-        {% endfor %}
+                  </ul>
          </div>
+         {% endfor %}
+
         </div>
         <div class="col-md-5">
             <h4 class="text-center">Business within your location</h4>
@@ -48,10 +50,10 @@
         <div class="col-md-4">
             <h4>Locations</h4>
             <hr>
-            <div class="card">
+            <div class="card ">
                 {% for location in locations %}
                 <ul class="list-group list-group-flush">
-                  <li class="list-group-item">{{location.name}},  <span class="text-success">People:</span> {{location.people.all.count}} <span class="text-primary">Business: </span> {{location.business.all.count}}</li>
+                  <li class="list-group-item business" ><span class="text-white">{{location.name}},</span>  <span class="text-success" style="font-weight:bold;">People:</span> <span style="font-weight:bold;color:white"> {{location.people.all.count}} </span> <span class="text-primary">Business: </span> <span style="font-weight:bold;color:white">{{location.business.all.count}}</span> </li>
                 </ul>
                 {% endfor %}
               </div>

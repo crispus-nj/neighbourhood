@@ -2,48 +2,47 @@
 {% block title %} {{request.user.username}} - profile {% endblock %}
 
 {% block content %}
-<div class="container rounded bg-white mb-5">
-    <div class="row mt-5 row-shadow ">
-        <div class="col-md-5 border-right">
-            {% for prof in profile%}
-            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5"
-                    width="150px" src="{{prof.avatar.url}}"><span
-                    class="font-weight-bold text-white">{{request.user.username}}</span><span
-                    class="text-primary text-white">{{request.user.email}}</span><span>
-                </span></div>
-                {% endfor %}
-        </div>
-        <div class="col-md-5 border-right">
-            <div class="p-3 py-5 mt-5">
-                <div class="d-flex justify-content-between align-items-center">
-                    <hr>
-                    <h4 class="text-right text-white">Profile Settings</h4>
-                    <hr>
-                </div>
-                <form action="" method="post" enctype="multipart/form-data">
-                    {% csrf_token %}
+<div class="container">
 
-                    <div class="row mt-3">
-                        <div class="col-md-12 mt-2">
-                            <label class="labels text-white">Profile Picture</label>
-                            {{form.avatar}}
-                        </div>
-                        <div class="col-md-12 mt-2">
-                            <label class="labels text-white">Bio</label>
-                            {{form.bio}}
-                        </div>
-                       
-                        <div class="col-md-12 mt-2">
-                            <label class="labels text-white">Location</label>
-                            {{form.location}}
-                        </div>
-                    </div>
-                    <div class="mt-5 text-center">
-                        <button class="btn btn-primary profile-button" type="submit">Save Profile</button>
-                    </div>
-                </form>
+<div class="row">
+    <div class="col-md-6 " style="margin: auto;">
+        {% for details in profile %}
+            <div class="card-body little-profile text-center">
+                <div class="pro-img" ><img src="{{prof.avatar.url}}" alt="user" style="max-width: 180px;"></div>
+                <h5 class="m-b-0">{{details.user.username}}</h5>
+                <h5 class="m-b-0">{{details.user.email}}</h5>
+                <h5 class="m-b-0"><span>{{details.user.first_name}}</span> <span>{{details.user.last_name}}</span></h5>
+                {% if user.bio is not None %}
+                <p>{{prof.bio}}</p>
+                {% endif %}
+                {% if request.user.id == user.id %} 
+                <a href="#" class="m-t-10 waves-effect waves-dark btn btn-primary btn-sm btn-rounded" data-abc="true">Edit Profile</a>
+                {% else %}
+                {% endif %}
             </div>
+            <hr>
+            <h5 class="text-center" style="font-weight: bold;">BUSINESS</h5>
+            <hr>
+            <div class="row">
+                {% for post in posts %}
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="{{post.image.url}}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title"><p style="margin-left: 0.3rem; vertical-align:middle">{{post.liked.all.count}} likes</p> </h5>
+                          <h6 class="card-subtitle mb-2 text-muted">{{post.name}}</h6>
+                          <p class="card-text">{{post.description|truncatechars:60}}</p>
+                          <a href="{{post.project_link}}" class="card-link">View Site</a>
+                        </div>
+                      </div>
+                </div>
+                
+                {% endfor %}
+            </div>
+           
         </div>
+        {% endfor %}
     </div>
 </div>
+
 {% endblock %}
