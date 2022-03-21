@@ -9,6 +9,8 @@ from .forms import RegistrationForm
 
 # Create your views here.
 def register(request):
+    if request.user.is_authenticated: 
+        return redirect('landing')
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
         if form.is_valid():
@@ -40,6 +42,8 @@ def register(request):
     return render(request, 'accounts/register.html', context)
 
 def login_user(request):
+    if request.user.is_authenticated: 
+        return redirect('landing')
     if request.method == 'POST':
         email = request.POST.get('email')
         password = request.POST.get('password')
