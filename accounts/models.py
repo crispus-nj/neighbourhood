@@ -1,7 +1,7 @@
 from email.policy import default
 from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser, PermissionsMixin
-
+from cloudinary.models import CloudinaryField
 # Create your models here.
 class UserAccountPermission(BaseUserManager):
     def create_user(self, first_name, last_name, username, email, password=None):
@@ -67,7 +67,7 @@ class UserAccount(AbstractBaseUser):
 from neighbour.models import Location
 
 class Profile(models.Model):
-    avatar = models.ImageField(null=True, default='avatar.svg')
+    avatar = CloudinaryField("image")
     bio = models.TextField(blank=True, null=True)
     user = models.ForeignKey(UserAccount, on_delete=models.CASCADE, related_name='users')
     location = models.ForeignKey(Location, on_delete=models.CASCADE, related_name='mtaani')
