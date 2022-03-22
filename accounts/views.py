@@ -102,13 +102,14 @@ def edit_user(request):
             # print(profile)
             for prof in profile:
                 profile = prof
-            # print(prof)
-            print(profile.user.username)
             
-            locations = Location.objects.get(id  = 1)
+            locations = Location.objects.all().filter(name = location)
             # username = Profile.objects.create(user = user.username)
-            locations.people.add(profile.user.id)
-            locations.save()
+            for location in locations:
+                jina = location.people.add(profile.user.id)
+                print(jina)
+            # locations.people.add(profile.user.id)
+            # locations.save()
             
             form.save()
             return redirect('profile', pk = user.id)
