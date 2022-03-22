@@ -36,7 +36,6 @@ def business(request):
             location = form.cleaned_data['location']
             user = request.user
 
-            print(name, category, image, location, user)
 
             business = Business.objects.create(
                 name = name,
@@ -45,7 +44,11 @@ def business(request):
                 location = location,
                 user = user
             )
-            business.save()
+            location = Location.objects.all().filter(name = location)
+            for location in location:
+                business = location.location.add(business)
+
+            # business.save()
 
             return redirect('business')
 
