@@ -78,7 +78,7 @@ def edit_user(request):
     user = request.user
     prof = Profile.objects.get(id = request.user.id)
     if request.method == 'POST':
-        form = ProfileCreationForm(request.POST, request.FILES)
+        form = ProfileCreationForm(request.POST, request.FILES, instance=prof)
         print(form.errors)
         if form.is_valid():
             avatar = form.cleaned_data['avatar']
@@ -96,6 +96,6 @@ def edit_user(request):
         else :
             return JsonResponse({"invalid form": "user"})
 
-    form = ProfileCreationForm()
+    form = ProfileCreationForm(instance=prof)
     context = {'form': form, 'prof': prof}
     return render(request, 'accounts/edit_profile.html', context)
