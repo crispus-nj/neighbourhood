@@ -26,7 +26,6 @@ class Business(models.Model):
 
 class Location(models.Model):
     name = models.CharField(max_length=70)
-    county = models.CharField(max_length=80)
     description = models.TextField(null=True, blank=True)
     people = models.ManyToManyField(UserAccount, blank=True, null=True, related_name='people')
     business = models.ManyToManyField(Business, blank=True, null=True, related_name='business')

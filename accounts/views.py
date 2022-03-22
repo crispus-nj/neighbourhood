@@ -4,7 +4,7 @@ from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
-from neighbour.models import Business
+from neighbour.models import Business, Location
 
 from .models import Profile, UserAccount
 from .forms import RegistrationForm, ProfileCreationForm
@@ -31,8 +31,19 @@ def register(request):
                 password = password
             )
             user.phone_number = phone_number
+            location = Location.objects.create(
+                name = "Kenya"
+            )
+            # location.people.set(user)
+            profile = Profile.objects.create(
+                user = user,
+                location = location
+            )
+            profile.save()
             user.is_active = True
             user.save()
+
+            
             login(request, user)
 
             return redirect('landing')

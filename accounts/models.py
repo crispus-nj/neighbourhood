@@ -67,10 +67,10 @@ class UserAccount(AbstractBaseUser):
 from neighbour.models import Location
 
 class Profile(models.Model):
-    avatar = CloudinaryField("image")
+    avatar = models.ImageField(default="avatar.svg", null=True)
     bio = models.TextField(blank=True, null=True)
     user = models.ForeignKey(UserAccount, on_delete=models.CASCADE, related_name='users')
-    location = models.ForeignKey(Location, on_delete=models.CASCADE, related_name='mtaani')
+    location = models.ForeignKey(Location, on_delete=models.CASCADE, related_name='mtaani', blank=True, null=True)
 
     def __str__(self):
         return self.user.username
