@@ -90,20 +90,28 @@ def edit_user(request):
     prof = Profile.objects.get(id = request.user.id)
     if request.method == 'POST':
         form = ProfileCreationForm(request.POST, request.FILES, instance=prof)
-        print(form.errors)
+        # print(form.errors)
         if form.is_valid():
-            avatar = form.cleaned_data['avatar']
-            bio = form.cleaned_data['bio']
+            # avatar = form.cleaned_data['avatar']
+            # bio = form.cleaned_data['bio']
             location = form.cleaned_data['location']
             user = request.user
+            user = UserAccount.objects.get(id = user.id)
 
-            user = Profile.objects.create(
-                avatar = avatar,
-                bio = bio,
-                location = location,
-                user = user
-            )
-            return redirect('profile', request.user.id)
+            profile = user.users.all()
+            # print(profile)
+            for prof in profile:
+                profile = prof
+            # print(prof)
+            print(profile.user.username)
+            
+            locations = Location.objects.get(id  = 1)
+            # username = Profile.objects.create(user = user.username)
+            locations.people.add(profile.user.id)
+            locations.save()
+            
+            form.save()
+            return redirect('profile', pk = user.id)
         else :
             return JsonResponse({"invalid form": "user"})
 
